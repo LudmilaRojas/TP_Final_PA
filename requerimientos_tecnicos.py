@@ -1,7 +1,7 @@
 from datetime import date, datetime
 
 
-class RegistroOperacion():
+class RegistroOperacion:
 
     def __init__(self, operacion, fecha_hora, detalle):
         self.operacion = operacion
@@ -42,7 +42,7 @@ def auditar(nombre_operacion):
 def _crear_clase_estado(metaclase, nombre, bases, espacio_nombres):
     nueva_clase = type.__new__(metaclase, nombre, bases, espacio_nombres)
 
-    if nombre != "EstadoPrestamo":
+    if nombre not in ("EstadoPrestamo", "MetaEstadoPrestamo"):
         metodos_obligatorios = ("esta_activo", "devolver", "descripcion")
         faltantes = []
 
@@ -69,24 +69,11 @@ MetaEstadoPrestamo = type(
 )
 
 
-def _base_esta_activo(self):
-    raise NotImplementedError("esta_activo()")
-
-def _base_devolver(self, prestamo):
-    raise NotImplementedError("devolver()")
-
-def _base_descripcion(self):
-    raise NotImplementedError("descripcion()")
-
-
 EstadoPrestamo = MetaEstadoPrestamo(
     "EstadoPrestamo",
     (object,),
     {
-        "__module__": __name__,
-        "esta_activo": _base_esta_activo,
-        "devolver": _base_devolver,
-        "descripcion": _base_descripcion
+        "__module__": __name__
     }
 )
 
@@ -137,7 +124,7 @@ EstadoDevuelto = MetaEstadoPrestamo(
 )
 
 
-class Prestamo():
+class Prestamo:
 
     def __init__(self, libro, usuario):
         self.libro = libro

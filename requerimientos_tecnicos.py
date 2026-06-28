@@ -21,7 +21,7 @@ def auditar(nombre_operacion):
 
     def decorador(funcion_original):
 
-        def envoltura(self, *argumentos):
+        def wrapper(self, *argumentos):
             resultado = funcion_original(self, *argumentos)
 
             nuevo_registro = RegistroOperacion(
@@ -33,7 +33,7 @@ def auditar(nombre_operacion):
             self.registros.append(nuevo_registro)
             return resultado
 
-        return envoltura
+        return wrapper
 
     return decorador
 

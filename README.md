@@ -35,8 +35,8 @@ Se implementó el patrón State para modelar el ciclo de vida de un préstamo. U
 
 1. Clonar el repositorio:
   
-      git clone <URL_del_repositorio>
-      cd <nombre_del_repositorio>
+   git clone https://github.com/LudmilaRojas/TP_Final_PA
+   cd TP_Final_PA
   
 2. Ejecutar el script de ejemplo:
   

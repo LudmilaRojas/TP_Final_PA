@@ -18,6 +18,11 @@ Sistema desarrollado en Python que permite administrar libros, usuarios y prést
     ├── requerimientos_tecnicos.py  # Decorador, metaclase, estados y clase Prestamo
     ├── invocaciones.py          # Script de ejemplo con casos de uso del sistema
     └── uml_biblioteca_digital_limpio.png  # Diagrama UML del sistema
+    
+## Justificación para el patrón de diseño State
+
+Se implementó el patrón State para modelar el ciclo de vida de un préstamo. Un préstamo puede estar en dos estados: activo o devuelto, y su comportamiento varía según el estado en que se encuentre. En lugar de manejar esa lógica con condicionales dentro de la clase Prestamo, cada estado se representa con su propia clase (EstadoActivo y EstadoDevuelto), ambas construidas a partir de EstadoPrestamo. Esto permite que Prestamo delegue las operaciones a su estado actual sin necesidad de saber cuál es, lo que hace el código más fácil de mantener y extender ante nuevos estados futuros.
+
 
 ## Instrucciones para ejecutar el proyecto
 
